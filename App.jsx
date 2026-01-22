@@ -171,13 +171,125 @@ const CitySelector = ({ selectedCity, onSelect }) => {
   );
 };
 
+// Utility function to check if an event has passed
+const isEventPast = (event) => {
+  try {
+    const now = new Date();
+    
+    // Parse the date string - handle various formats
+    let dateStr = event.date.trim();
+    // Remove day names if present (e.g., "Thursday, " or "Friday, ")
+    dateStr = dateStr.replace(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday),\s*/i, '');
+    // Remove trailing spaces
+    dateStr = dateStr.trim();
+    
+    // Parse the date - try multiple approaches
+    let eventDate = new Date(dateStr);
+    
+    // If that fails, try parsing with a more specific format
+    if (isNaN(eventDate.getTime())) {
+      // Try format like "February 27, 2026" or "January 27, 2026"
+      const dateMatch = dateStr.match(/(\w+)\s+(\d{1,2}),?\s+(\d{4})/);
+      if (dateMatch) {
+        eventDate = new Date(`${dateMatch[1]} ${dateMatch[2]}, ${dateMatch[3]}`);
+      }
+    }
+    
+    // If date parsing still fails, keep the event (better to show than hide)
+    if (isNaN(eventDate.getTime())) {
+      console.warn(`Could not parse date for event: ${event.title}`, event.date);
+      return false;
+    }
+    
+    // Parse the time string to get the end time
+    const timeStr = event.time.trim();
+    let endTimeStr = null;
+    
+    // Handle different time formats and extract end time
+    // Pattern 1: "5:30 PM - 7:00 PM" or "10:00 am –5:30 pm" (with dash/hyphen)
+    const dashPattern = /(\d{1,2}:\d{2}\s*(?:AM|PM|am|pm))\s*[-–]\s*(\d{1,2}:\d{2}\s*(?:AM|PM|am|pm))/i;
+    const dashMatch = timeStr.match(dashPattern);
+    if (dashMatch && dashMatch[2]) {
+      endTimeStr = dashMatch[2];
+    }
+    
+    // Pattern 2: "5PM to 7PM" or "10:00 AM to 5:30 PM"
+    if (!endTimeStr) {
+      const toPattern = /(\d{1,2}(?::\d{2})?\s*(?:AM|PM|am|pm))\s+to\s+(\d{1,2}(?::\d{2})?\s*(?:AM|PM|am|pm))/i;
+      const toMatch = timeStr.match(toPattern);
+      if (toMatch && toMatch[2]) {
+        endTimeStr = toMatch[2];
+      }
+    }
+    
+    // Pattern 3: Single time format (use as end time if no range found)
+    if (!endTimeStr) {
+      const singleTimePattern = /(\d{1,2}(?::\d{2})?\s*(?:AM|PM|am|pm))/i;
+      const singleMatch = timeStr.match(singleTimePattern);
+      if (singleMatch) {
+        endTimeStr = singleMatch[1];
+      }
+    }
+    
+    // If we found an end time, parse it and combine with date
+    if (endTimeStr) {
+      // Normalize the time string
+      endTimeStr = endTimeStr.trim();
+      
+      // Handle formats like "7PM" -> "7:00 PM"
+      if (!endTimeStr.includes(':')) {
+        const timeMatch = endTimeStr.match(/(\d{1,2})\s*(AM|PM|am|pm)/i);
+        if (timeMatch) {
+          endTimeStr = `${timeMatch[1]}:00 ${timeMatch[2].toUpperCase()}`;
+        }
+      } else {
+        // Ensure AM/PM is uppercase
+        endTimeStr = endTimeStr.replace(/(am|pm)/i, (match) => match.toUpperCase());
+      }
+      
+      // Create date string in format that Date constructor can parse
+      const year = eventDate.getFullYear();
+      const month = String(eventDate.getMonth() + 1).padStart(2, '0');
+      const day = String(eventDate.getDate()).padStart(2, '0');
+      
+      // Parse the combined date and time
+      const combinedDateTime = new Date(`${year}-${month}-${day} ${endTimeStr}`);
+      
+      if (!isNaN(combinedDateTime.getTime())) {
+        // Compare with current time - if now is past the end time, event has passed
+        return now > combinedDateTime;
+      }
+    }
+    
+    // If we couldn't parse the time, check if the date has passed
+    // Set time to end of day (11:59:59 PM) for that date
+    const endOfDay = new Date(eventDate);
+    endOfDay.setHours(23, 59, 59, 999);
+    
+    return now > endOfDay;
+  } catch (error) {
+    console.error(`Error checking if event is past: ${event.title}`, error);
+    // On error, don't filter it out (better to show than hide)
+    return false;
+  }
+};
+
 const App = () => {
   const [events] = useState(INITIAL_EVENTS);
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredEvents = events.filter(item => {
-    if (!searchQuery) return true;
-    return item.location.includes(searchQuery);
+    // Filter out past events
+    if (isEventPast(item)) {
+      return false;
+    }
+    
+    // Filter by location if search query is provided
+    if (searchQuery) {
+      return item.location.includes(searchQuery);
+    }
+    
+    return true;
   });
 
   return (
