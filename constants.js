@@ -65,6 +65,20 @@ export const INITIAL_EVENTS = [
     tags: [],
     link: 'https://atlanta.aitinkerers.org/p/ai-tinkerers-atlanta-code-first-demos-technical-deep-dives-january-27-2026',
   },
+  {
+    id: '2x77rje4v',
+    title: 'Feedback Fridays',
+    description: 'To launch a great startup, getting live feedback on your ideas from successful entrepreneurs who have been there and done that is vital. What\'s the best practice for pitching? Do investors prefer more information on the team or context on the industry? Should I include more numbers or more words? How many slides, again? There are too many questions, and they often need more practical answers. ',
+    date: '',
+    time: '12pm-2pm',
+    venue: 'Hybrid ATDC Community Room- 2nd Floor',
+    location: 'Atlanta, GA',
+    category: 'Meetup',
+    organizer: 'ATDC',
+    image: 'https://fonteva-customer-media-secure.s3.amazonaws.com/00D5e000002RfvxEAC/HeSlWCQw_download_4_png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAITT7XRAGPJU7I5JQ/20260122/us-east-1/s3/aws4_request&X-Amz-Date=20260122T175956Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=d9d44f5a9b2a3303e042e3867d4ee7d9e4a7880599478a9e2877897b021330c9',
+    tags: [],
+    link: 'https://portal.atdc.org/s/community-event?id=a1Y7V00000bJRBTUA4',
+  },
 
 
 ];
@@ -78,5 +92,5 @@ export const CITIES = [
   'Arlington, VA',
 ];
 
-export const SHOW_DEV_TOOLS = false;
+export const SHOW_DEV_TOOLS = true;
 
