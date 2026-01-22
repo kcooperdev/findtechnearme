@@ -75,7 +75,7 @@ export const INITIAL_EVENTS = [
     location: 'Atlanta, GA',
     category: 'Meetup',
     organizer: 'ATDC',
-    image: 'https://fonteva-customer-media-secure.s3.amazonaws.com/00D5e000002RfvxEAC/HeSlWCQw_download_4_png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAITT7XRAGPJU7I5JQ/20260122/us-east-1/s3/aws4_request&X-Amz-Date=20260122T175956Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=d9d44f5a9b2a3303e042e3867d4ee7d9e4a7880599478a9e2877897b021330c9',
+    image: 'https://files.elfsightcdn.com/eafe4a4d-3436-495d-b748-5bdce62d911d/d48d6b38-92b2-4958-95ce-7a2fbb15ee77/atdc-feedback-fridays.jpg',
     tags: [],
     link: 'https://portal.atdc.org/s/community-event?id=a1Y7V00000bJRBTUA4',
   },
