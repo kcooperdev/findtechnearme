@@ -2,10 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 // Create the search function following Google GenAI SDK guidelines
-export const searchLocalEvents = async (location: string, query: string = ""): Promise<{
-  summary: string;
-  sources: { title: string; uri: string }[];
-}> => {
+export const searchLocalEvents = async (location, query = "") => {
   // Initialize GoogleGenAI inside the function to ensure the most up-to-date API key is used
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
@@ -32,8 +29,8 @@ export const searchLocalEvents = async (location: string, query: string = ""): P
     const chunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
     
     const sources = chunks
-      .filter((chunk: any) => chunk.web)
-      .map((chunk: any) => ({
+      .filter((chunk) => chunk.web)
+      .map((chunk) => ({
         title: chunk.web.title || "Link",
         uri: chunk.web.uri
       }));
