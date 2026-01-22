@@ -1,7 +1,0 @@
-{
-  "name": "TechPulse: Local Grassroots Hub",
-  "description": "A modern, AI-powered platform for discovering local grassroots tech events, workshops, and meetups near you.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}

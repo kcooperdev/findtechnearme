@@ -179,7 +179,7 @@ const App = () => {
             <>Find your <br className="hidden md:block" /><span className="text-white not-italic">tech family</span></>
           </h1>
           <p className="text-zinc-500 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
-            The heartbeat of the local tech scene. Real-world sessions, hackathons, and coffee chats.
+            Your high-signal guide to local tech events, and grassroots tech meetups
           </p>
         </div>
 
@@ -220,7 +220,7 @@ const App = () => {
           </div>
           <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">find tech near me</h3>
           <p className="text-zinc-600 text-[11px] font-black uppercase tracking-[0.4em] mb-10">
-            EST. 2024 / PROTOCOL LOCAL
+            EST. 2026
           </p>
           <div className="flex justify-center gap-12 text-[10px] font-black text-zinc-800 uppercase tracking-[0.3em]">
             <a href="#" className="hover:text-indigo-500 transition-all hover:tracking-[0.4em]">Privacy</a>
