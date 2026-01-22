@@ -15,6 +15,20 @@ export const INITIAL_EVENTS = [
     tags: [],
     link: 'https://luma.com/ueap4iyk',
   },
+  {
+    id: 'd9faxd8wp',
+    title: 'CIAA Tech Summit',
+    description: 'The Tech Summit House has become a staple at CIAA Tournament Week.Attracting some of tech’s brightest minds from the African American Community, our panel discussions foster conversations around growing ecosystems, career opportunities, digital equity and upcoming innovations. Our Summit has showcased exhibitions by Google, Dell, plus local emerging tech companies. This event convenes tech creatives and celebrates tech, music & culture.',
+    date: 'February 27, 2026 ',
+    time: ' 10:00 am –5:30 pm',
+    venue: 'Rita Rossi Colwell Center',
+    location: 'Baltimore, MD',
+    category: 'Conference',
+    organizer: 'Visit Baltimore',
+    image: 'https://baltimore.org/wp-content/uploads/2023/01/S_V00939-610x0-c-default.jpg',
+    tags: [],
+    link: 'https://baltimore.org/event/ciaa-tech-summit/',
+  },
 
 
 
@@ -37,6 +51,20 @@ export const INITIAL_EVENTS = [
 
 
   // Atlanta Events
+  {
+    id: 'qioe6exyb',
+    title: 'Code-First Demos & Technical Deep Dives',
+    description: 'The Atlanta chapter returns for our first meetup of 2026, focusing on live technical demos, architecture breakdowns, and hard-won implementation notes. This is a high-trust room for candid technical work, where active builders share what they are shipping right now in LLMs and generative AI.',
+    date: 'January 27, 2026',
+    time: '5PM to 7PM ',
+    venue: 'Biltmore Innovation Center',
+    location: 'Atlanta, GA',
+    category: 'Meetup',
+    organizer: 'AI Tinkerers Atlanta',
+    image: 'https://sloppy-joe-app.imgix.net/integrated_text_banner/_C_DKmoAnZYI.jpg?w=1440&auto=format&fit=max',
+    tags: [],
+    link: 'https://atlanta.aitinkerers.org/p/ai-tinkerers-atlanta-code-first-demos-technical-deep-dives-january-27-2026',
+  },
 
 
 ];
