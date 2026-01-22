@@ -69,7 +69,7 @@ export const INITIAL_EVENTS = [
     id: '2x77rje4v',
     title: 'Feedback Fridays',
     description: 'To launch a great startup, getting live feedback on your ideas from successful entrepreneurs who have been there and done that is vital. What\'s the best practice for pitching? Do investors prefer more information on the team or context on the industry? Should I include more numbers or more words? How many slides, again? There are too many questions, and they often need more practical answers. ',
-    date: '',
+    date: 'January 23rd 2026',
     time: '12pm-2pm',
     venue: 'Hybrid ATDC Community Room- 2nd Floor',
     location: 'Atlanta, GA',
@@ -92,5 +92,5 @@ export const CITIES = [
   'Arlington, VA',
 ];
 
-export const SHOW_DEV_TOOLS = true;
+export const SHOW_DEV_TOOLS = false;
 
