@@ -34,5 +34,3 @@ export const CITIES = [
   'Atlanta, GA',
 ];
 
-// Toggle this to true to see the "Add Event" form (works in Dev environment only)
-export const SHOW_DEV_TOOLS = false;
