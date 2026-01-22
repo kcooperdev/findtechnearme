@@ -175,6 +175,11 @@ const App = () => {
   const [events] = useState(INITIAL_EVENTS);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const filteredEvents = events.filter(item => {
+    if (!searchQuery) return true;
+    return item.location.includes(searchQuery);
+  });
+
   return (
     <div className="min-h-screen bg-[#020202] text-zinc-100 pb-20 selection:bg-indigo-500/30 selection:text-white">
       {SHOW_DEV_TOOLS && import.meta.env.DEV && <DevEventForm />}
@@ -211,19 +216,12 @@ const App = () => {
             </h2>
             <div className="h-[2px] flex-1 mx-12 bg-gradient-to-r from-zinc-900 to-transparent hidden md:block"></div>
             <div className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-700">
-              {events.length} Upcoming Events
+              {filteredEvents.length} Upcoming Events
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {events
-              .filter(item => {
-                if (!searchQuery) return true;
-                // Strict filtering based on the selected city string
-                return item.location.includes(searchQuery);
-              })
-              .map(item => <EventCard key={item.id} item={item} />)
-            }
+            {filteredEvents.map(item => <EventCard key={item.id} item={item} />)}
           </div>
         </section>
 
