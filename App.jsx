@@ -52,6 +52,16 @@ const EventCard = ({ item }) => (
         <span className="text-indigo-400 text-[10px] font-black uppercase tracking-widest">{item.date}</span>
         <span className="text-zinc-600 text-[9px] font-mono tracking-tighter">{item.time}</span>
       </div>
+
+      {/* Venue Display */}
+      {item.venue && (
+        <div className="mb-2">
+          <span className="text-[10px] font-bold text-orange-500 uppercase tracking-wider border border-orange-500/20 px-2 py-0.5 rounded bg-orange-500/5">
+            📍 {item.venue}
+          </span>
+        </div>
+      )}
+
       <h3 className="text-xl font-black mb-3 line-clamp-1 group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{item.title}</h3>
       <p className="text-zinc-500 text-sm mb-6 line-clamp-3 leading-relaxed font-medium">{item.description}</p>
 

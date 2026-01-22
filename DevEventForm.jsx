@@ -26,18 +26,14 @@ export const DevEventForm = () => {
         const image = formData.image || `https://picsum.photos/seed/${id}/800/400`;
         const tagsArray = formData.tags.split(',').map(t => `'${t.trim()}'`).filter(t => t !== "''").join(', ');
 
-        // Combine Venue + City for the location field
-        const locationString = formData.venue
-            ? `${formData.venue}, ${formData.city}`
-            : formData.city;
-
         const jsString = `  {
     id: '${id}',
     title: '${formData.title.replace(/'/g, "\\'")}',
     description: '${formData.description.replace(/'/g, "\\'")}',
     date: '${formData.date}',
     time: '${formData.time}',
-    location: '${locationString}',
+    venue: '${formData.venue.replace(/'/g, "\\'")}',
+    location: '${formData.city}',
     category: '${formData.category}',
     organizer: '${formData.organizer}',
     image: '${image}',
