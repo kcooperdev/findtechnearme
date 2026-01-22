@@ -24,7 +24,7 @@ export const INITIAL_EVENTS = [
     title: 'Cursor Hackathon D.C.',
     description: '​Join us on Jan 30th for a small hackathon focused on shipping real projects with AI. Come solo or build with a team of up to four.Work on anything you want or dive into a themed track. Expect free food, drinks, and a focused build environment.',
     date: 'Friday, January 30, 2026',
-    time: 'Arlington, Virginia',
+    time: '10:00 AM - 7:00 PM',
     venue: 'Register to See Address',
     location: 'Arlington, VA',
     category: 'Hackathon',
