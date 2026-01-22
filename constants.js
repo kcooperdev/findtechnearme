@@ -2,117 +2,28 @@
 export const INITIAL_EVENTS = [
   // Baltimore Events
   {
-    id: 'b1',
-    title: 'Charm City JS Meetup',
-    description: 'Monthly meetup for JavaScript developers in Baltimore. This month: React 19 deep dive.',
-    date: 'Oct 24, 2024',
-    time: '6:30 PM',
-    location: 'Spark Baltimore, Baltimore, MD',
+    id: 'p1cknpeyq',
+    title: 'Built with charm',
+    description: '​A night for Baltimore’s builders, makers, and innovators.Baltimore has always been a city of builders, from shipyards to startups, murals to microchips. Built with Charm" is a new gathering for everyone building something in our city.',
+    date: 'Thursday, February 26, 2026',
+    time: '5:30 PM - 7:00 PM',
+    location: 'Spark Coworking - Baltimore, ',
     category: 'Meetup',
-    organizer: 'BmoreJS',
-    image: 'https://picsum.photos/seed/bmore1/800/400',
-    tags: ['JavaScript', 'React', 'Frontend'],
-  },
-  {
-    id: 'b2',
-    title: 'Baltimore Hackathon: Civic Tech',
-    description: 'Build solutions for local community challenges. Open to all skill levels.',
-    date: 'Nov 02, 2024',
-    time: '9:00 AM',
-    location: 'ETC Baltimore, Baltimore, MD',
-    category: 'Hackathon',
-    organizer: 'Code for Baltimore',
-    image: 'https://picsum.photos/seed/bmore2/800/400',
-    tags: ['Civic Tech', 'Hackathon', 'Open Source'],
-  },
-  {
-    id: 'b3',
-    title: 'Inner Harbor Tech Mixer',
-    description: 'Casual networking for tech professionals overlooking the harbor.',
-    date: 'Nov 05, 2024',
-    time: '5:30 PM',
-    location: 'Pratt Street Ale House, Baltimore, MD',
-    category: 'Networking',
     organizer: 'Baltimore Tech Meetup',
-    image: 'https://picsum.photos/seed/bmore3/800/400',
-    tags: ['Networking', 'Social', 'Tech'],
+    image: 'https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=400,height=400/event-covers/qa/6fed2f3f-7c42-48da-914b-8a87ba8615c2.png',
+    tags: [],
+    link: 'https://luma.com/ueap4iyk',
   },
+
+
 
   // Washington DC Events
-  {
-    id: 'dc1',
-    title: 'DC Tech Policy Forum',
-    description: 'Discussing the intersection of technology and public policy in the nation\'s capital.',
-    date: 'Oct 29, 2024',
-    time: '6:00 PM',
-    location: 'The National Press Club, Washington, DC',
-    category: 'Panel',
-    organizer: 'DC Tech Association',
-    image: 'https://picsum.photos/seed/dc1/800/400',
-    tags: ['Policy', 'GovTech', 'Panel'],
-  },
-  {
-    id: 'dc2',
-    title: 'Capital Region Cybersecurity Summit',
-    description: 'Workshops and talks on the latest in cybersecurity trends and defense strategies.',
-    date: 'Nov 07, 2024',
-    time: '10:00 AM',
-    location: 'Walter E. Washington Convention Center, Washington, DC',
-    category: 'Conference',
-    organizer: 'CyberDC',
-    image: 'https://picsum.photos/seed/dc2/800/400',
-    tags: ['Cybersecurity', 'Security', 'Infosec'],
-  },
-  {
-    id: 'dc3',
-    title: 'Women in Tech DC Happy Hour',
-    description: 'Celebrating women in technology. Networking and mentorship opportunities.',
-    date: 'Nov 12, 2024',
-    time: '5:00 PM',
-    location: 'The Wharf, Washington, DC',
-    category: 'Networking',
-    organizer: 'Women Who Code DC',
-    image: 'https://picsum.photos/seed/dc3/800/400',
-    tags: ['Women in Tech', 'Networking', 'Mentorship'],
-  },
+
+
 
   // Atlanta Events
-  {
-    id: 'atl1',
-    title: 'Atlanta Startup Week',
-    description: 'A celebration of entrepreneurship and innovation in the South.',
-    date: 'Nov 15, 2024',
-    time: '9:00 AM',
-    location: 'Atlanta Tech Village, Atlanta, GA',
-    category: 'Conference',
-    organizer: 'Startup Atlanta',
-    image: 'https://picsum.photos/seed/atl1/800/400',
-    tags: ['Startup', 'Entrepreneurship', 'Innovation'],
-  },
-  {
-    id: 'atl2',
-    title: 'React Atlanta Meetup',
-    description: 'Connecting React developers in the ATL. Talks on performance and state management.',
-    date: 'Nov 20, 2024',
-    time: '7:00 PM',
-    location: 'General Assembly, Atlanta, GA',
-    category: 'Meetup',
-    organizer: 'React ATL',
-    image: 'https://picsum.photos/seed/atl2/800/400',
-    tags: ['React', 'Frontend', 'JavaScript'],
-  },
-  {
-    id: 'atl3',
-    title: 'Black Tech Ecosystem Mixer',
-    description: 'Bringing together Black tech professionals, founders, and investors.',
-    date: 'Nov 25, 2024',
-    time: '6:30 PM',
-    location: 'The Gathering Spot, Atlanta, GA',
-    category: 'Networking',
-    organizer: 'BLK Tech Connect',
-    image: 'https://picsum.photos/seed/atl3/800/400',
-    tags: ['Networking', 'Black Tech', 'Community'],
-  }
+
+
 ];
 
 export const CATEGORIES = ['All', 'Workshop', 'Meetup', 'Hackathon', 'Conference', 'Networking'];
@@ -122,3 +33,6 @@ export const CITIES = [
   'Washington, DC',
   'Atlanta, GA',
 ];
+
+// Toggle this to true to see the "Add Event" form (works in Dev environment only)
+export const SHOW_DEV_TOOLS = false;

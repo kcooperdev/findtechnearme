@@ -1,32 +1,29 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { INITIAL_EVENTS, CITIES } from './constants';
-import { searchLocalEvents } from './services/geminiService';
+import { INITIAL_EVENTS, CITIES, SHOW_DEV_TOOLS } from './constants';
+import { DevEventForm } from './DevEventForm';
 
-// Minimalist Laptop Icon SVG Component
-const LaptopIcon = ({ className = "w-6 h-6" }) => (
+// Fireball Icon SVG Component
+const FireballIcon = ({ className = "w-6 h-6" }) => (
   <svg
     viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    fill="currentColor"
     className={className}
+    style={{ filter: 'drop-shadow(0 0 2px rgba(255, 100, 0, 0.5))' }}
   >
-    <rect width="18" height="12" x="3" y="4" rx="2" ry="2" />
-    <line x1="2" x2="22" y1="20" y2="20" />
+    <path d="M14.5 2C13.5 3.5 13 5 13 6C13 7.5 14 8 15 9C16.5 10.5 17 12.5 16.5 14.5C16 16.5 14.5 18 12.5 18.5C10.5 19 8.5 18 7.5 16.5C8 17.5 9 18 10 18C11 18 12 17.5 12.5 16.5C13 15.5 12.5 14.5 11.5 14C10.5 13.5 9.5 13.5 8.5 14C7.5 14.5 6.5 15.5 6.5 17C6.5 19.5 8.5 21.5 11 22C14.5 22.5 18 20 18.5 16.5C19 13.5 17.5 10.5 15.5 8.5C14.5 7.5 14 6 14.5 4.5C14.8 3.5 15.5 2.5 16.5 2C15.5 2 15 2 14.5 2Z" />
+    <path d="M12 4C11.5 5 11.5 6 12 7C12.5 8 13 8.5 13.5 8.5C14 8.5 14.5 8 14.5 7.5C14.5 6.5 14 5.5 13.5 4.5C13 3.5 12 3 12 4Z" className="opacity-70" />
   </svg>
 );
 
 const Navbar = () => (
   <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
     <div className="max-w-7xl mx-auto flex items-center justify-between glass rounded-full px-8 py-3">
-      <div className="flex items-center gap-2">
-        <div className="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-[0_0_20px_rgba(79,70,229,0.3)] transition-transform hover:scale-110 duration-300">
-          <LaptopIcon className="w-5 h-5" />
+      <div className="flex items-center gap-2 group cursor-pointer">
+        <div className="w-9 h-9 rounded-xl bg-orange-600 flex items-center justify-center text-white shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:bg-red-500 group-hover:shadow-[0_0_30px_rgba(239,68,68,0.6)]">
+          <FireballIcon className="w-5 h-5 text-yellow-200" />
         </div>
-        <span className="text-xl font-black tracking-tight uppercase">find tech near me</span>
+        <span className="text-xl font-black tracking-tight uppercase group-hover:text-red-400 transition-colors">find tech near me</span>
       </div>
       <div className="hidden md:block w-32"></div>
     </div>
@@ -65,9 +62,14 @@ const EventCard = ({ item }) => (
           </div>
           <span className="text-[10px] text-zinc-500 truncate max-w-[100px] font-bold uppercase tracking-wider">{item.organizer}</span>
         </div>
-        <button className="text-[10px] font-black uppercase tracking-[0.2em] text-white flex items-center gap-2 group-hover:gap-3 transition-all opacity-60 group-hover:opacity-100">
+        <a
+          href={item.link || '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] font-black uppercase tracking-[0.2em] text-white flex items-center gap-2 group-hover:gap-3 transition-all opacity-60 group-hover:opacity-100"
+        >
           RSVP <span>→</span>
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -165,14 +167,15 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#020202] text-zinc-100 pb-20 selection:bg-indigo-500/30 selection:text-white">
+      {SHOW_DEV_TOOLS && import.meta.env.DEV && <DevEventForm />}
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-6 pt-32">
         {/* Header Section */}
-        <div className="text-center mb-16 max-w-5xl mx-auto animate-fade-in">
+        <div className="text-center mb-16 max-w-5xl mx-auto animate-fade-in group/header">
           <div className="flex justify-center mb-8">
-            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-              <LaptopIcon className="w-8 h-8" />
+            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-orange-600 shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover/header:scale-110 group-hover/header:shadow-[0_0_80px_rgba(239,68,68,0.5)] group-hover/header:bg-orange-50">
+              <FireballIcon className="w-8 h-8 group-hover/header:text-red-500 transition-colors" />
             </div>
           </div>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 uppercase leading-[0.85] italic">
@@ -194,11 +197,11 @@ const App = () => {
         <section className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <div className="flex items-center justify-between mb-16">
             <h2 className="text-4xl font-black uppercase tracking-tighter italic">
-              Upcoming Sessions
+              Upcoming Events
             </h2>
             <div className="h-[2px] flex-1 mx-12 bg-gradient-to-r from-zinc-900 to-transparent hidden md:block"></div>
             <div className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-700">
-              {events.length} ACTIVE SIGNALS
+              {events.length} Upcoming Events
             </div>
           </div>
 
@@ -215,8 +218,8 @@ const App = () => {
         </section>
 
         <footer className="mt-48 text-center border-t border-white/5 pt-24">
-          <div className="w-16 h-16 bg-white rounded-full mx-auto mb-10 flex items-center justify-center text-black shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-transform hover:scale-110 duration-500">
-            <LaptopIcon className="w-8 h-8" />
+          <div className="w-16 h-16 bg-white rounded-full mx-auto mb-10 flex items-center justify-center text-orange-600 shadow-[0_0_50px_rgba(255,255,255,0.1)] transition-transform hover:scale-110 duration-500 hover:shadow-[0_0_60px_rgba(239,68,68,0.4)]">
+            <FireballIcon className="w-8 h-8 hover:text-red-500 transition-colors" />
           </div>
           <h3 className="text-2xl font-black uppercase tracking-tighter mb-4">find tech near me</h3>
           <p className="text-zinc-600 text-[11px] font-black uppercase tracking-[0.4em] mb-10">
